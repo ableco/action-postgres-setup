@@ -1,0 +1,12 @@
+name: 'Postgres Setup'
+description: 'Set up Postgres in the GitHub Actions VM'
+inputs:
+  postgres-version:
+    description: 'Postgres version'
+    required: true
+    default: '11'
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/postgres-setup.sh ${{ inputs.postgres-version }}
+      shell: bash
