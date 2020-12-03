@@ -5,6 +5,10 @@ inputs:
     description: 'Postgres version'
     required: true
     default: '11'
+  max-connections:
+    description: 'Postgres Max Connections'
+    required: false
+    default: '1000'
 runs:
   using: "composite"
   steps:
