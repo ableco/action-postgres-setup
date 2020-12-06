@@ -19,4 +19,7 @@ jobs:
         with:
           postgres-version: 11
       - name: Initialize pgbench
-        run: pgbench -c 100 -T 300 -S -n
+        run: |
+          ls /usr/share/postgresql-common/pg_wrapper
+          sudo ln -s /usr/share/postgresql-common/pg_wrapper /usr/bin/pgbench
+          pgbench -c 100 -T 300 -S -n
