@@ -1,0 +1,14 @@
+name: Test
+
+on:
+  push
+
+jobs:
+  e2e-tests:
+    name: E2E Tests
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Set up postgres
+        uses: ableco/action-postgres-setup@v1
+        with:
+          postgres-version: 11
