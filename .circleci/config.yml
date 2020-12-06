@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/action-postgres-setup
+    docker:
+      - image: circleci/postgres:11.8-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+    steps:
+      - run:
+          name: Database Setup
+          command: |
+            pgbench -U postgres -i -p 5432 -d postgres
+            pgbench -U postgres -c 10 -T 30 -S -n
