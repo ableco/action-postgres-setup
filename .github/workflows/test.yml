@@ -24,33 +24,33 @@ jobs:
           sudo ln -s /usr/lib/postgresql/11/bin/pgbench /usr/bin/pgbench
           pgbench -U postgres -i -p 5432 -d postgres
           pgbench -U postgres -c 10 -T 30 -S -n
-    docker:
-      env:
-        PGHOST: 127.0.0.1
-        DATABASE_HOST: 127.0.0.1
-        PGUSER: postgres
-        PGPASSWORD: postgres
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-        POSTGRES_DB: pici_development
-        RAILS_ENV: development
-        REDIS_URL: redis://127.0.0.1:6379/0
-      services:
-        postgres:
-          image: postgres:11.8-alpine
-          env:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
-            POSTGRES_DB: pici_development
-          ports: ["5432:5432"]
-          options: >-
-            --mount type=tmpfs,destination=/var/lib/postgresql/data
-            --health-cmd pg_isready
-            --health-interval 10s
-            --health-timeout 5s
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Initialize pgbench
-        run: |
-          pgbench -U postgres -i -p 5432 -d postgres
-          pgbench -U postgres -c 10 -T 30 -S -n
+  docker:
+    env:
+      PGHOST: 127.0.0.1
+      DATABASE_HOST: 127.0.0.1
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pici_development
+      RAILS_ENV: development
+      REDIS_URL: redis://127.0.0.1:6379/0
+    services:
+      postgres:
+        image: postgres:11.8-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: pici_development
+        ports: ["5432:5432"]
+        options: >-
+          --mount type=tmpfs,destination=/var/lib/postgresql/data
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+  runs-on: ubuntu-20.04
+  steps:
+    - name: Initialize pgbench
+      run: |
+        pgbench -U postgres -i -p 5432 -d postgres
+        pgbench -U postgres -c 10 -T 30 -S -n
