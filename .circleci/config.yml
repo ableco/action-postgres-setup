@@ -11,5 +11,5 @@ jobs:
       - run:
           name: Database Setup
           command: |
-            pgbench -U postgres -i -h 127.0.0.1 -p 5432 -d postgres
-            pgbench -U postgres -h 127.0.0.1 -c 10 -T 30 -S -n
+            pgbench -U postgres -i -h localhost -d postgres
+            pgbench -U postgres -h localhost -c 10 -T 30 -S -n
