@@ -21,5 +21,6 @@ jobs:
       - name: Initialize pgbench
         run: |
           ls /usr/share/postgresql-common/pg_wrapper
+          sudo rm /usr/bin/pgbench
           sudo ln -s /usr/share/postgresql-common/pg_wrapper /usr/bin/pgbench
           pgbench -c 100 -T 300 -S -n
