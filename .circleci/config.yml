@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/action-postgres-setup
     docker:
-      - image: circleci/postgres:11.8-alpine
+      - image: circleci/postgres:11-alpine
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: postgres
