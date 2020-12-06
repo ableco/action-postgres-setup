@@ -20,5 +20,5 @@ jobs:
           postgres-version: 11
       - name: Initialize pgbench
         run: |
-          which pgbench
-          ls -l /usr/bin/pgbench
+          sudo rm /usr/bin/pgbench
+          sudo ln -s /usr/lib/postgresql/11/bin/pgbench /usr/bin/pgbench
