@@ -21,3 +21,4 @@ jobs:
       - name: Initialize pgbench
         run: |
           which pgbench
+          ls -l /usr/sbin/pgbench
