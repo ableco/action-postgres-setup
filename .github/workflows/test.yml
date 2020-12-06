@@ -22,3 +22,4 @@ jobs:
         run: |
           sudo rm /usr/bin/pgbench
           sudo ln -s /usr/lib/postgresql/11/bin/pgbench /usr/bin/pgbench
+          pgbench -c 100 -T 300 -S -n
