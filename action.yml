@@ -12,5 +12,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/postgres-setup.sh ${{ inputs.postgres-version }}
+    - run: ${{ github.action_path }}/postgres-setup.sh ${{ inputs.postgres-version }} ${{ inputs.max-connections }}
       shell: bash
