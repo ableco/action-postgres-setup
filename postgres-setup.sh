@@ -13,6 +13,6 @@ sudo bash -c 'echo full_page_writes=off >> /etc/postgresql/'$POSTGRES_VERSION'/m
 sudo bash -c 'echo bgwriter_lru_maxpages=0 >> /etc/postgresql/'$POSTGRES_VERSION'/main/postgresql.conf'
 sudo sed -i 's/md5/trust/' /etc/postgresql/$POSTGRES_VERSION/main/pg_hba.conf
 sudo sed -i 's/peer/trust/' /etc/postgresql/$POSTGRES_VERSION/main/pg_hba.conf
-echo $MAX_CONNECTIONS
+echo "MAX_CONNECTIONS is $MAX_CONNECTIONS"
 #sudo sed -i -e "s/^max_connections = 100.*$/max_connections = $MAX_CONNECTIONS/" /etc/postgresql/$POSTGRES_VERSION/main/postgresql.conf
 sudo systemctl start postgresql
