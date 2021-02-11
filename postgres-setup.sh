@@ -3,6 +3,7 @@ POSTGRES_VERSION=$1
 MAX_CONNECTIONS=$2
 if [ $POSTGRES_VERSION -ne 13 ]; then
   sudo apt-get remove postgresql postgresql-13
+  sudo apt-get update
   sudo apt-get install postgresql-$POSTGRES_VERSION postgresql-contrib-$POSTGRES_VERSION
   sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/$POSTGRES_VERSION/main/postgresql.conf
 fi
