@@ -2,6 +2,9 @@
 POSTGRES_VERSION=$1
 MAX_CONNECTIONS=$2
 if [ $POSTGRES_VERSION -ne 13 ]; then
+  sudo apt-get install curl ca-certificates gnupg
+  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+  echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/postgresql-pgdg.list > /dev/null
   sudo apt-get remove postgresql postgresql-13
   sudo apt-get update
   sudo apt-get install postgresql-$POSTGRES_VERSION postgresql-contrib-$POSTGRES_VERSION
