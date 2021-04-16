@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set up postgres
-        uses: ableco/action-postgres-setup@main
+        uses: ableco/action-postgres-setup@v1
         with:
           postgres-version: 11
       - name: Initialize pgbench
