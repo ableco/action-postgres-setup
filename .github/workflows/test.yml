@@ -18,6 +18,8 @@ jobs:
         uses: ableco/action-postgres-setup@v1
         with:
           postgres-version: 11
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Initialize pgbench
         run: |
           sudo rm /usr/bin/pgbench
