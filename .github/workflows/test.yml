@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         os:
+          - ubuntu-22.04
           - ubuntu-20.04
           - ubuntu-18.04
           - ubuntu-16.04
@@ -15,13 +16,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set up postgres
-        uses: ableco/action-postgres-setup@v1
+        uses: ableco/action-postgres-setup@v2
         with:
-          postgres-version: 11
+          postgres-version: 13
       - name: Initialize pgbench
         run: |
           sudo rm /usr/bin/pgbench
-          sudo ln -s /usr/lib/postgresql/11/bin/pgbench /usr/bin/pgbench
+          sudo ln -s /usr/lib/postgresql/13/bin/pgbench /usr/bin/pgbench
           pgbench -U postgres -i -p 5432 -d postgres
           pgbench -U postgres -c 10 -T 30 -S -n
   docker:
@@ -37,7 +38,7 @@ jobs:
       REDIS_URL: redis://127.0.0.1:6379/0
     services:
       postgres:
-        image: postgres:11.8-alpine
+        image: postgres:13.9-alpine
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
